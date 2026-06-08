@@ -32,3 +32,26 @@ print(x.sum())
 a = torch.arange(3).reshape((3, 1))
 b = torch.arange(2).reshape((1, 2))
 print(a + b)
+
+# 为结果分配新的内存空间
+before = id(a)
+print(before)
+a = a + b
+print(id(a))
+
+# 原地操作
+z = torch.zeros_like(a)
+print("before: ", id(z))
+z[:] = a + b
+print("after: ", id(z))
+
+before = id(a)
+print("before: ", before)
+a += b
+print("after: ", id(a))
+
+# 转换为其他Python对象
+n = a.numpy()
+m = torch.tensor(n)
+print("n: ", n)
+print("m: ", m)
