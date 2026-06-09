@@ -46,3 +46,12 @@ x = torch.arange(4, dtype=torch.float32)
 y = torch.ones(4, dtype=torch.float32)
 print(torch.dot(x, y))
 print(torch.sum(x * y))
+
+# 矩阵-向量积
+A = torch.arange(20, dtype=torch.float32).reshape(5, 4)
+x = torch.arange(4, dtype=torch.float32)
+print(torch.mv(A, x))
+
+# 矩阵-矩阵乘法
+B = torch.ones(4, 3, dtype=torch.float32)
+print(torch.mm(A, B))
